@@ -2,10 +2,14 @@ CMSC 495 Android Project
 
 Group Members (so far):
 
-Ayush Agrawal 
+Ayush Agrawal - need git
 Christian Garcia
-Joseph Prince
+Joseph Prince - need git
 Alex Mari
 
 ---More to come---
 Adding Webhook integration with discord.  So while the project is progressing, we'll be notified via discord.  
+
+---Subject--
+Morse code messagin app
+
