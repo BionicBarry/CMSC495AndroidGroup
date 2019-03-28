@@ -13,3 +13,9 @@ Adding Webhook integration with discord.  So while the project is progressing, w
 ---Subject--
 Morse code messaging app
 
+
+--Project Plan Parts--
+Alex -- project requirements/ features
+Christian -- Workflow / Architectural Diagrams
+Ayush --
+Joeseph -- 
