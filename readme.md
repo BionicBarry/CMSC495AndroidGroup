@@ -1,6 +1,6 @@
 CMSC 495 Android Project
 
-Group Members (so far):
+Group Members:
 
 Ayush Agrawal - need git
 Christian Garcia
@@ -11,11 +11,10 @@ Alex Mari
 Adding Webhook integration with discord.  So while the project is progressing, we'll be notified via discord.  
 
 ---Subject--
-Morse code messaging app
+Morse code messaging app, using SMS protocol on android systems.  
 
 
---Project Plan Parts--
-Alex -- project requirements/ features
-Christian -- Workflow / Architectural Diagrams
-Ayush --
-Joeseph -- 
+---Testing Plan---
+Alex - Skelton Source Code
+Ayush - UI draw up (3 examples)
+Christian and Joe - Report Write up
