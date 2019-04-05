@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,7 +44,39 @@ public class MorseTranslate {
     static long[] letterY = {dash, dot, dash, dash};
     static long[] letterZ = {dash, dash, dot, dot};
     
+    //Void method to populate hashmap using characters as the key in reference to the long arrays of morse
+    void populateMap(){
+        this.morseMap.put("a", letterA);
+        this.morseMap.put("b", letterB);
+        this.morseMap.put("c", letterC);
+        this.morseMap.put("d", letterD);
+        this.morseMap.put("e", letterE);
+        this.morseMap.put("f", letterF);
+        this.morseMap.put("g", letterG);
+        this.morseMap.put("h", letterH);
+        this.morseMap.put("i", letterI);
+        this.morseMap.put("j", letterJ);
+        this.morseMap.put("k", letterK);
+        this.morseMap.put("l", letterL);
+        this.morseMap.put("m", letterM);
+        this.morseMap.put("n", letterN);
+        this.morseMap.put("o", letterO);
+        this.morseMap.put("p", letterP);
+        this.morseMap.put("q", letterQ);
+        this.morseMap.put("r", letterR);
+        this.morseMap.put("s", letterS);
+        this.morseMap.put("t", letterT);
+        this.morseMap.put("u", letterU);
+        this.morseMap.put("v", letterV);
+        this.morseMap.put("w", letterW);
+        this.morseMap.put("x", letterX);
+        this.morseMap.put("y", letterY);
+        this.morseMap.put("z", letterZ);
+        
+     
+    }
     
-                  
-
+    public MorseTranslate(){
+        this.populateMap();
+    }
 }
