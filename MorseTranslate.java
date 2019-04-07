@@ -1,3 +1,4 @@
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,40 +10,41 @@ import java.util.Map;
 public class MorseTranslate {
     
     //The Vibration API uses long arrays to determine length of vibrating alerts.  Therefore, a dot is half as much as a dash to properly reflect morse code  
-    static long dot = 100;
-    static long dash = 200;
+    static long DOT = 100;
+    static long DASH = 200;
+    static long DELAY = 50;
     
     //Hashmap used to store and reference each letter for the merssage parser
     HashMap<String, long[]> morseMap = new HashMap<String, long[]>(); 
     
     
     // Static references for each letter of the morse alphabet
-    static long[] letterA = {dot, dash};
-    static long[] letterB = {dash, dot, dot, dot};
-    static long[] letterC = {dash, dot, dash, dot};
-    static long[] letterD = {dash, dot, dot};
-    static long[] letterE = {dot};
-    static long[] letterF = {dot, dot, dash, dot};
-    static long[] letterG = {dash, dash, dot};
-    static long[] letterH = {dot, dot, dot, dot};
-    static long[] letterI = {dot, dot};
-    static long[] letterJ = {dot, dash, dash, dash};
-    static long[] letterK = {dash, dot, dash};
-    static long[] letterL = {dot, dash, dot, dot};
-    static long[] letterM = {dash, dash};
-    static long[] letterN = {dash, dot};
-    static long[] letterO = {dash, dash, dash};
-    static long[] letterP = {dot, dash, dash, dot};
-    static long[] letterQ = {dash, dash, dot, dash};
-    static long[] letterR = {dot, dash, dot};
-    static long[] letterS = {dot, dot, dot};
-    static long[] letterT = {dash};
-    static long[] letterU = {dot, dot, dash};
-    static long[] letterV = {dot, dot, dot, dash};
-    static long[] letterW = {dot, dash, dash};
-    static long[] letterX = {dash, dot, dot, dash};
-    static long[] letterY = {dash, dot, dash, dash};
-    static long[] letterZ = {dash, dash, dot, dot};
+    static long[] letterA = {DOT, DASH};
+    static long[] letterB = {DASH, DOT, DOT, DOT};
+    static long[] letterC = {DASH, DOT, DASH, DOT};
+    static long[] letterD = {DASH, DOT, DOT};
+    static long[] letterE = {DOT};
+    static long[] letterF = {DOT, DOT, DASH, DOT};
+    static long[] letterG = {DASH, DASH, DOT};
+    static long[] letterH = {DOT, DOT, DOT, DOT};
+    static long[] letterI = {DOT, DOT};
+    static long[] letterJ = {DOT, DASH, DASH, DASH};
+    static long[] letterK = {DASH, DOT, DASH};
+    static long[] letterL = {DOT, DASH, DOT, DOT};
+    static long[] letterM = {DASH, DASH};
+    static long[] letterN = {DASH, DOT};
+    static long[] letterO = {DASH, DASH, DASH};
+    static long[] letterP = {DOT, DASH, DASH, DOT};
+    static long[] letterQ = {DASH, DASH, DOT, DASH};
+    static long[] letterR = {DOT, DASH, DOT};
+    static long[] letterS = {DOT, DOT, DOT};
+    static long[] letterT = {DASH};
+    static long[] letterU = {DOT, DOT, DASH};
+    static long[] letterV = {DOT, DOT, DOT, DASH};
+    static long[] letterW = {DOT, DASH, DASH};
+    static long[] letterX = {DASH, DOT, DOT, DASH};
+    static long[] letterY = {DASH, DOT, DASH, DASH};
+    static long[] letterZ = {DASH, DASH, DOT, DOT};
     
     //Void method to populate hashmap using characters as the key in reference to the long arrays of morse
     void populateMap(){
@@ -78,5 +80,23 @@ public class MorseTranslate {
     
     public MorseTranslate(){
         this.populateMap();
+    }
+    
+    //Method used to parse the string from the sender into morse code
+    public ArrayList<long[]> parseMessage(String input){
+        
+        //String being tokenized into a character array for easy parsing
+        char[] tokenizedInput = input.toCharArray();
+        //Array List containing the morse values of the String
+        ArrayList<long[]> morseMessage = new ArrayList<long[]>();
+        
+        //For loop parsing through the character array
+        for (int i = 0; i > tokenizedInput.length; i++){
+            //parser finds the long array according to the key of the character.  
+            morseMessage.add(morseMap.get(tokenizedInput[i]));
+        }
+        
+        //returning the completed long Array
+        return morseMessage;
     }
 }
