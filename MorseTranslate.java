@@ -83,7 +83,7 @@ public class MorseTranslate {
     }
     
     //Method used to parse the string from the sender into morse code
-    public ArrayList<long[]> parseMessage(String input){
+    private ArrayList<long[]> parseMessage(String input){
         
         //String being tokenized into a character array for easy parsing
         char[] tokenizedInput = input.toCharArray();
@@ -98,5 +98,24 @@ public class MorseTranslate {
         
         //returning the completed long Array
         return morseMessage;
+    }
+    
+    public long[] convertToMorse(String input){
+        //Final Morse message array
+        long[] morseVibrationValues; 
+        //PlaceHolder Array List
+        ArrayList<long[]> coolVibes = parseMessage(input);
+        
+        //for loop looping throuigh the array list
+        for(int i = 0; i < coolVibes.size(); i++){
+            //Index for each individual long array letter
+            int index = 0;
+            //Nested For Loop for getting the main long array populated with the morse message
+            for(int lon = 0; lon < coolVibes.get(i).length; lon++){
+                morseVibrationValues[index] = coolVibes.get(i)[lon];
+                index++;
+            }
+        }
+        return morseVibrationValues;
     }
 }
