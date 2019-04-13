@@ -102,7 +102,9 @@ public class MorseTranslate {
     
     public long[] convertToMorse(String input){
         //Final Morse message array
-        long[] morseVibrationValues; 
+        //4-13-19 ----- I changed the name of the variable to 'morseValues' because the same method can be used
+        // for the light, since they both use long arrays for activation intervals  
+        long[] morseValues; 
         //PlaceHolder Array List
         ArrayList<long[]> coolVibes = parseMessage(input);
         
@@ -112,10 +114,10 @@ public class MorseTranslate {
             int index = 0;
             //Nested For Loop for getting the main long array populated with the morse message
             for(int lon = 0; lon < coolVibes.get(i).length; lon++){
-                morseVibrationValues[index] = coolVibes.get(i)[lon];
+                morseValues[index] = coolVibes.get(i)[lon];
                 index++;
             }
         }
-        return morseVibrationValues;
+        return morseValues;
     }
 }
