@@ -1,4 +1,3 @@
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -45,6 +44,17 @@ public class MorseTranslate {
     static long[] letterX = {DASH, DOT, DOT, DASH};
     static long[] letterY = {DASH, DOT, DASH, DASH};
     static long[] letterZ = {DASH, DASH, DOT, DOT};
+    //Numbers
+    static long[] number1 ={DOT, DASH, DASH, DASH, DASH};
+    static long[] number2 ={DOT, DOT, DASH, DASH, DASH};
+    static long[] number3 ={DOT, DOT, DOT, DASH, DASH};
+    static long[] number4 ={DOT, DOT, DOT, DOT, DASH};
+    static long[] number5 ={DOT, DOT, DOT, DOT, DOT};
+    static long[] number6 ={DASH, DOT, DOT, DOT, DOT};
+    static long[] number7 ={DASH, DASH, DOT, DOT, DOT};
+    static long[] number8 ={DASH, DASH, DASH, DOT, DOT};
+    static long[] number9 ={DASH, DASH, DASH, DASH, DOT};
+    static long[] number0 ={DASH, DASH, DASH, DASH, DASH};
     
     //Void method to populate hashmap using characters as the key in reference to the long arrays of morse
     void populateMap(){
@@ -74,7 +84,16 @@ public class MorseTranslate {
         this.morseMap.put("x", letterX);
         this.morseMap.put("y", letterY);
         this.morseMap.put("z", letterZ);
-        
+        this.morseMap.put("1", number1);
+        this.morseMap.put("2", number2);
+        this.morseMap.put("3", number3);
+        this.morseMap.put("4", number4);
+        this.morseMap.put("5", number5);
+        this.morseMap.put("6", number6);
+        this.morseMap.put("7", number7);
+        this.morseMap.put("8", number8);
+        this.morseMap.put("9", number9);
+        this.morseMap.put("0", number0);
      
     }
     
