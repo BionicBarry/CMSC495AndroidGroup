@@ -28,4 +28,9 @@ is done.  What is still needed to be br worked on is:
 ---XML Permissions
 ---Completion of the SMS class using the android SMSManager and Telphony libraries
 
+4/27
+
+userSettings uploaded
+SMorSe skeleton code uploaded, very important to the UI
+
 
