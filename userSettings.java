@@ -1,10 +1,13 @@
 
 //Class used to store user setting pertaining to the morse relay function
-public class userSettings {
+public class UserSettings {
     private boolean vibrateMorse;
     private boolean flashMorse;
     
-    public userSettings(){
+    //Both of these setting determine which device on the phone will relay the
+    //SMS message in morse code.  The choices are the flash light, vibrator,
+    //Both, or neither.  
+    public UserSettings(){
         this.vibrateMorse = true;
         this.flashMorse = true;
     }
