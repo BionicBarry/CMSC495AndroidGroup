@@ -13,6 +13,9 @@ import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_contacts.*
 import java.util.*
 
+/*
+this class is used to load the contact list when it is successfully loaded from the contacts on the phone.
+ */
 class ContactsActivity : AppCompatActivity() {
     lateinit var listContacts: ArrayList<Contact>
     lateinit var lvContacts: ListView

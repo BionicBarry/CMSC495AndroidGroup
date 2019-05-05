@@ -1,4 +1,4 @@
-﻿package com.example.samplechatapplication;
+package com.example.samplechatapplication;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +10,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+import com.example.samplechatapplication.utils.Alerts;
+import com.example.samplechatapplication.utils.SharePreferenceData;
+import com.example.samplechatapplication.utils.UtilClass;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -23,10 +26,11 @@ public class ChatActivity extends AppCompatActivity {
 
     private RecyclerView mMessageRecycler;
     private MessageListAdapter mMessageAdapter;
+    private ArrayList<String> mSpinnerList=new ArrayList<String>();
     @Nullable
     private String contactName;
     @Nullable
-    private List<Message> messageList;
+    private List<Message> messageList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +50,40 @@ public class ChatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         ArrayList<Message> messagesList = new ArrayList<>();
+      /* // Button button_chatbox_morse=findViewById(R.id.button_chatbox_morse);
+        button_chatbox_morse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(SharePreferenceData.INSTANCE.getBooleanPreference(ChatActivity.this, UtilClass.INSTANCE.getSWITCH_FLAG(),false)){
+                    Toast.makeText(ChatActivity.this,"chat box enable",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(ChatActivity.this,"chat box disable",Toast.LENGTH_LONG).show();
+                }
+            }
+        });*/
+
+        mSpinnerList.add("Urgency");
+        mSpinnerList.add("None");
+        mSpinnerList.add("Urgent");
+        mSpinnerList.add("Emergency");
+        final Spinner spinner=findViewById(R.id.spinner);
+        spinner.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,mSpinnerList));
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(i!=0){
+                    new Alerts(ChatActivity.this).findUrgency(i-1,spinner.getSelectedItem().toString());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         if (messageList == null || messageList.isEmpty() || contactName.isEmpty()) {
-            User user1 = new User();
+           /* User user1 = new User();
             user1.nickname = "Sam";
             user1.profileUrl = R.drawable.sample1;
             user1.id = 1111;
@@ -88,7 +123,7 @@ public class ChatActivity extends AppCompatActivity {
             messagesList.add(message1);
             messagesList.add(message2);
             messagesList.add(message3);
-            messagesList.add(message4);
+            messagesList.add(message4);*/
         } else {
             messagesList.clear();
             messagesList.addAll(messageList);
@@ -130,6 +165,7 @@ public class ChatActivity extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra("message", mMessageAdapter.getMMessageList());
+        intent.putExtra("contact_name", contactName);
         setResult(Activity.RESULT_OK, intent);
         super.onBackPressed();
     }

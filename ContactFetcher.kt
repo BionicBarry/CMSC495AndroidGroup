@@ -9,6 +9,9 @@ import android.provider.ContactsContract.CommonDataKinds.Phone
 import android.support.v4.content.CursorLoader
 import java.util.*
 
+/*
+this class is used to fetch contacts of users from the phone contacts in the app
+ */
 class ContactFetcher(private val context: Context) {
 
     fun fetchAll(
@@ -30,7 +33,9 @@ class ContactFetcher(private val context: Context) {
             do {
                 val contactId = c.getString(idIndex)
                 val contactDisplayName = c.getString(nameIndex)
-                val contact = Contact(contactId, contactDisplayName)
+                val contact = Contact()
+                contact.id = contactId
+                contact.name = contactDisplayName
                 contactsMap[contactId] = contact
                 listContacts.add(contact)
             } while (c.moveToNext())

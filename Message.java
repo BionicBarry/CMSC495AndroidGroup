@@ -1,21 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package com.example.samplechatapplication;
 
-/**
- *
- * @author BionicBarry
+import org.jetbrains.annotations.Nullable;
+
+import java.io.Serializable;
+
+/*
+this class is model class for message
  */
-public class Message {
-    private String sender, recipient, body;
-    private int urgency;
-    
-    public Message(String s, String r, String b, int u){
-        this.sender = s;
-        this.recipient = r; 
-        this.body = b;
-        this.urgency = u;  
-    }
+public class Message implements Serializable {
+    @Nullable
+    String message;
+    @Nullable
+    User sender;
+    @Nullable
+    String createdAt;
 }

@@ -1,6 +1,7 @@
-﻿package com.example.samplechatapplication;
+package com.example.samplechatapplication;
 
 import java.io.Serializable;
+import java.util.List;
 
 /*
 this class is model class for user

@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter
 import android.widget.TextView
 import java.util.*
 
+/*
+this class is used to bind all the contacts which has been fetched from the contact app
+ */
 class ContactsAdapter(context: Context, contacts: ArrayList<Contact>, private val listener: ContactClickListener) :
     ArrayAdapter<Contact>(context, 0, contacts) {
 

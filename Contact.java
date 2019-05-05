@@ -1,4 +1,4 @@
-﻿package com.example.samplechatapplication;
+package com.example.samplechatapplication;
 
 import java.util.ArrayList;
 

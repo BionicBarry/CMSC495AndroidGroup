@@ -1,5 +1,7 @@
-﻿package com.example.samplechatapplication;
+package com.example.samplechatapplication;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -14,12 +16,18 @@ import java.util.List;
 
 /*
 This class is to bind the data for the chat screens
+
  */
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ChatViewHolder> {
-
+    public static int idCalled=-1;
     public List<Chat> list;
     public ArrayList<Message> messageList;
+    private Activity mContext;
+    public Adapter(Activity context) {
+        mContext=context;
+    }
+
 
     @NonNull
     @Override
@@ -47,6 +55,20 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ChatViewHolder> {
         this.messageList = message;
     }
 
+    public void changeLastMessageForDefaultChat(String message){
+        Chat chat=new Chat();
+        for(int i=0;i<list.size();i++){
+            if(list.get(i).id==idCalled){
+                list.get(i).message=message;
+                chat=list.get(i);
+                list.remove(i);
+            }
+        }
+        list.add(0,chat);
+
+        notifyDataSetChanged();
+    }
+
     class ChatViewHolder extends RecyclerView.ViewHolder {
         TextView nameTextView;
         TextView messageTextView;
@@ -69,10 +91,11 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ChatViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    idCalled=list.get(position).id;
                     Intent intent = new Intent(itemView.getContext(), ChatActivity.class);
                     intent.putExtra("messageList", messageList);
                     intent.putExtra("name", list.get(position).name);
-                    itemView.getContext().startActivity(intent);
+                    mContext.startActivityForResult(intent,2);
                 }
             });
         }

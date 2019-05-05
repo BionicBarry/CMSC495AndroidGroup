@@ -9,6 +9,9 @@ import android.widget.TextView
 import java.util.*
 import kotlin.collections.ArrayList
 
+/*
+this class is used to bind the messagees list in the mainactivity
+ */
 class MessageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     var mMessageList = ArrayList<Message>()
@@ -24,12 +27,12 @@ class MessageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return mMessageList?.size
+        return mMessageList.size
     }
 
     // Determines the appropriate ViewType according to the sender of the message.
     override fun getItemViewType(position: Int): Int {
-        val message = mMessageList!![position]
+        val message = mMessageList[position]
 
         return if (Objects.requireNonNull<Int>(Objects.requireNonNull<User>(message.sender).id) == CURRENT_USER_ID) {
             // If the current user is the sender of the message
@@ -58,7 +61,7 @@ class MessageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val message = mMessageList!![position]
+        val message = mMessageList[position]
 
         when (holder.itemViewType) {
             VIEW_TYPE_MESSAGE_SENT -> (holder as SentMessageHolder).bind(message)
@@ -100,7 +103,6 @@ class MessageListAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 nameText.text = message.sender!!.nickname
                 message.sender?.profileUrl?.let { profileImage.setImageResource(it) }
             }
-
         }
     }
 }
