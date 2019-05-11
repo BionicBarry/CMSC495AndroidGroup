@@ -14,6 +14,8 @@ public class Alerts{
     UserSettings settings = new UserSettings();
     //Added Vibrator Object for proper functionality
     Vibrator viber = new Vibrator();
+    //Flash Class
+    Flash flasher = new Flash();
 
 
     public Alerts(){
@@ -54,11 +56,13 @@ public class Alerts{
             viber.vibrate(translator.convertToMorse(message),0);
         //if flash user setting is active
         }else if(flash){
-            flashlight(translator.convertToMorse(message),0);
+            //5-11-19 new flash class being used
+            flasher.flashMessage(translator.convertToMorse(message));
         //if flash and vibrate user setting is active
         }else if (vib && flash){
             viber.vibrate(translator.convertToMorse(message),0);
-            flashlight(translator.convertToMorse(message),0);
+            //5-11-19 new flash class being used
+            flasher.flashMessage(translator.convertToMorse(message));
         //if neither morse relay user setting is active
         }else{
             return;
