@@ -36,7 +36,7 @@ public class Alerts{
                     break;
                 //Urgent Message
                 case 1:
-                    viber.vibrate(ATN, 0);
+                    viber.vibrate(ATN, -1);
                     morseRelay(vib, flash, message);
                     break;
                 //Emergency Message
@@ -53,14 +53,14 @@ public class Alerts{
 
         //if vibrate user setting is active
         if(vib){
-            viber.vibrate(translator.convertToMorse(message),0);
+            viber.vibrate(translator.convertToMorse(message),-1);
         //if flash user setting is active
         }else if(flash){
             //5-11-19 new flash class being used
             flasher.flashMessage(translator.convertToMorse(message));
         //if flash and vibrate user setting is active
         }else if (vib && flash){
-            viber.vibrate(translator.convertToMorse(message),0);
+            viber.vibrate(translator.convertToMorse(message),1);
             //5-11-19 new flash class being used
             flasher.flashMessage(translator.convertToMorse(message));
         //if neither morse relay user setting is active
