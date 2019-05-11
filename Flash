@@ -1,0 +1,50 @@
+package com.example.bionicbarry.smorse;
+
+import android.hardware.camera2.*;
+import android.hardware.Camera.*;
+
+//Class used to adapt long morse Array for camera flashlight
+public class Flash{
+
+    //Camera
+    Camera cam;
+    Camera.Parameters param;
+    boolean hasFlash = false;
+    boolean isOn = false;
+    //Static Delay Variable
+    private static long DELAY = 50;
+
+    //Constructor initializing flash option if the device allows it
+    public Flash(){
+        if(getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH)){
+            cam = Camera.open();
+            param = cam.getParameters();
+            hasFlash = true;
+        }
+    }
+
+    //Function converting long array into flashes
+    public void flashMessage(long[] morse){
+
+        for(int i = 0; i < morse.length; i++){
+            turnLightOn();
+            Thread.sleep(morse[i]);
+            turnLightOff();
+            Thread.sleep(DELAY);
+        }
+    }
+
+    //Private method for turning on the light
+    private void turnLightOn(){
+        this.param.setFlashMode(Parameters.FLASH_MODE_TORCH);
+        cam.setParameters(param);
+        cam.startPreview();
+    }
+
+    //private method for turning off the light
+    private void turnLightOff(){
+        cam.stopPreview();
+        cam.release();
+        cam = null;
+    }
+}
